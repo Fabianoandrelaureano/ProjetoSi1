@@ -12,7 +12,7 @@ public class Application extends Controller {
     }
     
     public static Result criaViagem(){
-    	return ok(index.render("Your new application is ready."));
+    	return ok(cadastroViagens.render("Your new application is ready."));
     }
 
 }

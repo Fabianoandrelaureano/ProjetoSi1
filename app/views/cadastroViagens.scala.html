@@ -1,0 +1,48 @@
+@(message: String)
+
+@main("Home Page") {
+
+		<center><img class="centralizar" src="@routes.Assets.at("images/logo.png")" /> </center>
+        <ul class="nav nav-pills">
+          <li><a href="/"">Home</a></li>
+          <li class="active"><a href="/cadastrarHackfest">Participar de Evento</a></li>
+          
+        </ul>	
+        <div class="container form-horizontal panel panel-primary text-info" >
+        
+       
+		<center><h2><b>Sistema de Hackfests - Confirma&ccedil;&atilde;o de Participa&ccedil;&atilde;o </b></h2></center>
+		<h3><center>Hackfest: getNome()</center> <br>
+		Idealizador do evento: getNomeAdmin() <br> Contato:getEmailAdmin() <br> </h3>
+		</div>
+		<center>
+		<h3>Para participar insira seus dados e clique em participar:</h3>
+		<h3>numDePessoasQueConfirmaram()</h3>
+		
+		</center>
+		<h3>Pessoas que j&aacute; confirmaram presen&ccedil;a:</h3>
+		<class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome </th>
+                            <th>Email </th>
+                            
+                             
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        <tr>
+                            <td>getNome()</td>
+                            <td>getEmail()</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+		
+		
+
+        
+}
