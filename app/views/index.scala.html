@@ -1,7 +1,30 @@
 @(message: String)
 
-@main("Welcome to Play") {
+@main("Home Page") {
 
-    @play20.welcome(message, style = "Java")
-
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		
+        <h3>
+        <span class="label label-primary">Bem Vindo(a)! </span>
+        <a href="/logout" class="btn btn-primary pull-right" > LogOut</a>
+    	<a class="btn btn-primary pull-right">Minha Conta</a>
+        </h3>
+    </div>
+    <br><br>
+	<center><img class="centralizar" src="@routes.Assets.at("images/logo.png")" /> </center>
+        <ul class="nav nav-pills">
+          <li class="active"><a href="/"">Home</a></li>
+          <li><a href="/criarViagem">Criar uma nova viagem</a></li>
+          
+        </ul>	
+        <div class="container form-horizontal panel panel-primary text-info" >
+        
+       
+		<center><h2><b>Viagens ja organizadas</b></h2></center>
+		
+        </div>     
+        
+        @viagens("testando 1 2 3") 
+        
+        
 }
