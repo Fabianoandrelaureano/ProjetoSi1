@@ -56,6 +56,7 @@ public class Login extends Controller {
 	
 	private static boolean validate(String email, String senha) {
 		Usuario u = controlador.getUsuario(email);
+		if(u == null) return false;
 		return u.getSenha().equals(senha);
 	}
 }
