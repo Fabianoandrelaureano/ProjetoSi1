@@ -1,0 +1,33 @@
+
+
+@main("Register Page") {
+	
+     <ul class="nav nav-pills">
+     <div class="col-lg-4"></div>
+   <div class="col-lg-4 container form-horizontal panel panel-primary text-info">
+   @if(flash.contains("fail")) {
+   		<p class="bg-danger" style="">
+        	@flash.get("fail")
+		</p>
+   }
+
+   @helper.form(routes.Registro.registrar) {
+	   <h1 class="text-center">Registrar</h1>
+	
+	   <p>
+	       <input type="text" name="nome" placeholder="Nome" 
+                class="form-control">
+	   </p>
+	   <p>
+	       <input type="email" name="email" placeholder="Email" 
+                   class="form-control">
+	   </p>
+	   <p>
+	       <input type="password" name="pass" placeholder="Password" class="form-control" >
+	   </p>
+	   <center>
+	       <button class="btn btn-primary"  type="submit">Registrar</button><br><br>
+	   </center>
+	}
+    </div>
+}

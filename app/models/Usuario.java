@@ -3,6 +3,10 @@ package models;
 public class Usuario {
 	
 private String nome, email, senha;
+
+	public Usuario(){
+		
+	}
 	
 	public Usuario(String nome, String email, String senha) {
 		this.setNome(nome);

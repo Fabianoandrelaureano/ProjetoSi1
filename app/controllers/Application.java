@@ -16,8 +16,11 @@ public class Application extends Controller {
 	private static ControladorDeBD controlador = ControladorDeBD.getInstance();
 	
     public static Result index() {
-    	Viagem v = new Viagem("local","data","descricao");
+    	if(session().get("user") == null){
+    		return ok(login.render());
+    	}    	
 
+    	Viagem v = new Viagem("local","data","descricao");
         return ok(index.render("Your new application is ready.", controlador));
     }
     

@@ -12,15 +12,17 @@
                         </tr>
                     </thead>
                     
-                    <tbody>                                       	
+                    <tbody>  
+                    @for(viagem <- controlador.getViagens()){                                     	
                         <tr>
-                            <td>getLocal()</td>
-                            <td>getDescricao()</td>                            
-                            <td>getData()</td>
+                            <td>@viagem.getLocal()</td>
+                            <td>@viagem.getDescricao()</td>                            
+                            <td>@viagem.getData()</td>
                             <td>                                    
                                 <input type="submit" class="btn btn-primary" value="Participar">                            
                             </td>                            
-                        </tr>                                            
+                        </tr> 
+                    }                                           
                     </tbody>
                 </table>
             </div></div>
