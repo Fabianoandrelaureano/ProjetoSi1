@@ -45,4 +45,23 @@ public class ControladorDeBD {
 		usuarios.add(u);
 	}
 
+	public Viagem getViagem(String local) {
+		for(Viagem v: viagem){
+			if(v.getLocal().equals(local)){
+				return v;
+			}
+		}
+		return null;
+	}
+
+	public void participarViagem(Usuario u, Viagem v2) {
+		if(v2 != null){
+			for(Viagem v: viagem){
+				if(v.getLocal().equals(v2.getLocal())){
+					v.addPessoaNaViagem(u);
+				}
+			}
+		}
+	}
+
 }

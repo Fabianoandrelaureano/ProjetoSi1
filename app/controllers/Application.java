@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 
+import models.Usuario;
 import models.Viagem;
 //import models.dao.GenericDAO;
 //import models.dao.GenericDAOImpl;
@@ -22,6 +23,17 @@ public class Application extends Controller {
 
     	Viagem v = new Viagem("local","data","descricao");
         return ok(index.render("Your new application is ready.", controlador));
+    }
+    
+    public static Result participarViagem(){
+    	DynamicForm requestData = Form.form().bindFromRequest();
+    	
+    	String local = requestData.get("local");
+    	Usuario u = controlador.getUsuario(session().get("email"));
+    	Viagem v = controlador.getViagem(local);
+    	
+    	controlador.participarViagem(u,v);
+    	return ok(index.render(" ", controlador));
     }
     
     public static Result criaViagem(){

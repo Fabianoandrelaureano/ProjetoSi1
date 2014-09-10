@@ -48,6 +48,9 @@ public class Viagem {
 		pessoasNaViagem.add(u);		
 	}
 	
+	public List getParticipantes(){
+		return pessoasNaViagem;
+	}
 	
 
 }
