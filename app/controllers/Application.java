@@ -1,8 +1,10 @@
 package controllers;
 
+import java.util.ArrayList;
+
 import models.Viagem;
-import models.dao.GenericDAO;
-import models.dao.GenericDAOImpl;
+//import models.dao.GenericDAO;
+//import models.dao.GenericDAOImpl;
 import play.*;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -10,10 +12,13 @@ import play.mvc.*;
 import views.html.*;
 
 public class Application extends Controller {
-	private static GenericDAO dao = new GenericDAOImpl();
-
+	//private static GenericDAO dao = new GenericDAOImpl();
+	private static ControladorDeBD controlador = ControladorDeBD.getInstance();
+	
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+    	Viagem v = new Viagem("local","data","descricao");
+
+        return ok(index.render("Your new application is ready.", controlador));
     }
     
     public static Result criaViagem(){
@@ -29,14 +34,16 @@ public class Application extends Controller {
     	
     	Viagem v = new Viagem(local,data,descricao);
     	
-    	return ok(index.render("=p"));
+    	controlador.addViagem(v);
+    	
+    	return ok(index.render("=p",controlador));
     }
     
-    public static GenericDAO getDao() {
-		return dao;
-	}
-
-	public static void setDao(GenericDAO dao) {
-		Application.dao = dao;
-	}
+//    public static GenericDAO getDao() {
+//		return dao;
+//	}
+//
+//	public static void setDao(GenericDAO dao) {
+//		Application.dao = dao;
+//	}
 }

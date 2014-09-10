@@ -1,4 +1,4 @@
-@(message: String)
+@(message: String, controlador : ControladorDeBD)
 
 @main("Home Page") {
 	
@@ -14,7 +14,7 @@
 		
         </div>     
         
-        @viagens("testando 1 2 3") 
+        @viagens("testando 1 2 3",controlador) 
         
         
 }
