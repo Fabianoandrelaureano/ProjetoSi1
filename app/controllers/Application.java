@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 
+import models.CadastroAberto;
 import models.Usuario;
 import models.Viagem;
 //import models.dao.GenericDAO;
@@ -29,10 +30,12 @@ public class Application extends Controller {
     	DynamicForm requestData = Form.form().bindFromRequest();
     	
     	String local = requestData.get("local");
+    	String senha = requestData.get("senha");
+    	
     	Usuario u = controlador.getUsuario(session().get("email"));
     	Viagem v = controlador.getViagem(local);
     	
-    	controlador.participarViagem(u,v);
+    	controlador.participarViagem(u,v,senha);
     	return ok(index.render(" ", controlador));
     }
     
@@ -46,9 +49,15 @@ public class Application extends Controller {
     	String local = requestData.get("local");
     	String data = requestData.get("data");
     	String descricao = requestData.get("descricao");
+    	String dia = requestData.get("dia");
+    	String mes = requestData.get("mes");
+    	String ano = requestData.get("ano");
+    	String senha = requestData.get("senha");
+    	
+    	data = dia + "/" + mes + "/" + ano;
     	
     	Viagem v = new Viagem(local,data,descricao);
-    	
+    	v.setCadastro(new CadastroAberto(), senha);
     	controlador.addViagem(v);
     	
     	return ok(index.render("=p",controlador));

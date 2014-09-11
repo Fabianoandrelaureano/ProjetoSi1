@@ -8,7 +8,8 @@
                             <th>Local </th>
                             <th>Descricao </th>
                             <th>Numero de Participantes</th>
-                            <th>Data </th>
+                            <th>Data</th>
+                            <th>Senha</th>
                             <th>A&ccedil;&otilde;es </th>
                         </tr>
                     </thead>
@@ -20,11 +21,13 @@
                             <td>@viagem.getDescricao()</td>
                             <td>@viagem.getNumeroDePessoasNaViagem()</td>                            
                             <td>@viagem.getData()</td>
+                            <form action="/participarViagem" method="post">
+                            <td><input class="input-xxlarge" type="text" size="10" maxlength="10" placeholder="Senha" name="senha"></td>
                             <td>
-                            	<form action="/participarViagem" method="post">
+                            	
                             		<input type="hidden" name="local" value="@viagem.getLocal()">                                   
                                 	<input type="submit" class="btn btn-primary" value="Participar">
-                                </form>                          
+                            </form>                          
                             </td>                            
                         </tr> 
                     }                                           

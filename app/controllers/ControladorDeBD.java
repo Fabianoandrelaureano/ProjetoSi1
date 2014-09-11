@@ -5,8 +5,11 @@ import java.util.List;
 
 import models.Usuario;
 import models.Viagem;
+//import play.db.jpa.*;
 
 public class ControladorDeBD {
+	
+	//private static GenericDAO dao = new GenericDAOImpl();
 	
 	private static ControladorDeBD controlador;
 	private Viagem v = new Viagem("local","data","descricao");
@@ -54,14 +57,22 @@ public class ControladorDeBD {
 		return null;
 	}
 
-	public void participarViagem(Usuario u, Viagem v2) {
+	public void participarViagem(Usuario u, Viagem v2,String senha) {
 		if(v2 != null){
 			for(Viagem v: viagem){
-				if(v.getLocal().equals(v2.getLocal())){
-					v.addPessoaNaViagem(u);
+				if(v.getLocal().equals(v2.getLocal()) && v.getSenha().equals(senha)){
+					v.addPessoaNaViagem(u,null);
 				}
 			}
 		}
 	}
+	
+//	public static GenericDAO getDao() {
+//		return dao;
+//	}
+//
+//	public static void setDao(GenericDAO dao) {
+//		ControladorDeBD.dao = dao;
+//	}
 
 }
