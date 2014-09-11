@@ -46,7 +46,7 @@ public class Viagem {
 		this.setDescricao(descricao);
 		pessoasNaViagem = new ArrayList<Usuario>();
 		cadastro = new CadastroAberto();
-		senha = null;
+		senha = "";
 	}
 
 	public void setLocal(String local) {
@@ -82,7 +82,7 @@ public class Viagem {
 		//pessoasNaViagem.add(u);		
 	}
 	
-	public List getParticipantes(){
+	public List<Usuario> getParticipantes(){
 		return pessoasNaViagem;
 	}
 	

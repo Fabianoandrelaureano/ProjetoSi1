@@ -8,6 +8,7 @@ GET     /logout							 controllers.Login.logout()
 
 GET		/criarViagem					controllers.Application.criaViagem()
 POST	/criarViagem					controllers.Application.novaViagem()
+POST	/infoViagem						controllers.Application.infoViagem()
 
 POST	/participarViagem				controllers.Application.participarViagem()
 

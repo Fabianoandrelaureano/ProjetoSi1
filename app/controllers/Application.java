@@ -23,6 +23,8 @@ public class Application extends Controller {
     	}    	
 
     	Viagem v = new Viagem("local","data","descricao");
+    	Usuario u = new Usuario("nome","email","senha");
+    	v.addPessoaNaViagem(u, null);
         return ok(index.render("Your new application is ready.", controlador));
     }
     
@@ -37,6 +39,15 @@ public class Application extends Controller {
     	
     	controlador.participarViagem(u,v,senha);
     	return ok(index.render(" ", controlador));
+    }
+    
+    public static Result infoViagem(){
+    	DynamicForm requestData = Form.form().bindFromRequest();
+    	
+    	String local = requestData.get("local");
+    	Viagem v = controlador.getViagem(local);
+    	
+    	return ok(maisInfo.render(v));
     }
     
     public static Result criaViagem(){

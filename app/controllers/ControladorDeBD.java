@@ -12,11 +12,14 @@ public class ControladorDeBD {
 	//private static GenericDAO dao = new GenericDAOImpl();
 	
 	private static ControladorDeBD controlador;
-	private Viagem v = new Viagem("local","data","descricao");
+	private Viagem v = new Viagem("Tanga","1/1/2015","descricao");
 	private List<Viagem> viagem = new ArrayList<Viagem>();
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	private ControladorDeBD(){
+		Usuario u = new Usuario("Ítalo","italo.lins@ccc.ufcg.edu.br","123");
+		usuarios.add(u);
+		v.addPessoaNaViagem(u, "");
 		viagem.add(v);
 	}
 	
@@ -61,7 +64,7 @@ public class ControladorDeBD {
 		if(v2 != null){
 			for(Viagem v: viagem){
 				if(v.getLocal().equals(v2.getLocal()) && v.getSenha().equals(senha)){
-					v.addPessoaNaViagem(u,null);
+					v.addPessoaNaViagem(u,"");
 				}
 			}
 		}
