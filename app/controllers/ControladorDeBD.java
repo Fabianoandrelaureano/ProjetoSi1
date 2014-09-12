@@ -17,8 +17,18 @@ public class ControladorDeBD {
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	private ControladorDeBD(){
-		Usuario u = new Usuario("Ítalo","italo.lins@ccc.ufcg.edu.br","123");
-		usuarios.add(u);
+		Usuario[] users = {new Usuario("Ítalo", "italo.lins@ccc.ufcg.edu.br", "123"), new Usuario("Fabiano", "fabiano.laureano@ccc.ufcg.edu.br", "123"), new Usuario("Wellington", "wellington.araujo.silva@ccc.ufcg.edu.br", "123"), new Usuario("Guilherme", "guilherme@gmail.com", "123"), new Usuario("Gustavo", "gustavo@gmail.com", "123"), 
+				new Usuario("Jose", "jose@gmail.com", "123"), new Usuario("Carlos", "carlos@gmail.com", "123"), new Usuario("Antonio", "antonio@gmail.com", "123"), new Usuario("Vitor", "vitor@gmail.com", "123"), new Usuario("Pedro", "pedro@gmail.com", "123"), 
+				new Usuario("Joao", "joao@outlook.com", "123"), new Usuario("Maria", "maria@outlook.com", "123"), new Usuario("Marta", "marta@outlook.com", "123"), new Usuario("Carla", "carla@outlook.com", "123"), new Usuario("Enzo", "enzo@outlook.com", "123"), 
+				new Usuario("Ricardo", "ricardo@gmail.com", "123"), new Usuario("Batista", "batista@gmail.com", "123"), new Usuario("Hugo", "hugo@gmail.com", "123"), new Usuario("Silvano", "silvano@gmail.com", "123"), new Usuario("Vilma", "vilma@gmail.com", "123"), 
+				new Usuario("Fred", "fred@outlook.com", "123"), new Usuario("Barney", "barney@outlook.com", "123"), new Usuario("Sidney", "sidney@outlook.com", "123"), new Usuario("Kimberly", "kymberly@outlook.com", "123"), new Usuario("Seya", "seya@outlook.com", "123"), 
+				new Usuario("Mario", "mario@gmail.com", "123"), new Usuario("Vegeta", "vegeta@gmail.com", "123"), new Usuario("Goku", "goku@gmail.com", "123"), new Usuario("Madinbu", "madinbu@gmail.com", "123"), new Usuario("Capile", "capile@gmail.com", "123"),  
+				new Usuario("Dalton", "dalton@outlook.com", "123"), new Usuario("Wilkerson", "wilkerson@outlook.com", "123"), new Usuario("Leandro", "leandro@outlook.com", "123"), new Usuario("Leonardo", "leonardo@outlook.com", "123"), new Usuario("Chitaozinho", "chitaozinho@outlook.com", "123"), 
+				new Usuario("Xororo", "xororo@gmail.com", "123"), new Usuario("Pele", "pele@gmail.com", "123"), new Usuario("Ronaldo", "ronaldo@gmail.com", "123"), new Usuario("Naoli", "naoli@gmail.com", "123"), new Usuario("Nemlerei", "nemlerei@gmail.com", "123")}; 		
+		for (Usuario user:users){
+			usuarios.add(user);
+		}
+		
 		v.addPessoaNaViagem(u, "");
 		viagem.add(v);
 	}
