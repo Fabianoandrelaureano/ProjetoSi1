@@ -5,14 +5,16 @@ import java.util.List;
 
 import models.Usuario;
 import models.Viagem;
-//import play.db.jpa.*;
+import models.dao.GenericDAO;
+import models.dao.GenericDAOImpl;
+import play.db.jpa.*;
 
 public class ControladorDeBD {
 	
-	//private static GenericDAO dao = new GenericDAOImpl();
+	private static GenericDAO dao = new GenericDAOImpl();
 	
 	private static ControladorDeBD controlador;
-	private Viagem v = new Viagem("Tanga","1/1/2015","descricao");
+	private Viagem v = new Viagem("Tanga","1/1/2015","descricao",new Usuario("Ítalo", "italo.lins@ccc.ufcg.edu.br", "123"));
 	private List<Viagem> viagem = new ArrayList<Viagem>();
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
@@ -29,7 +31,7 @@ public class ControladorDeBD {
 			usuarios.add(user);
 		}
 		
-		v.addPessoaNaViagem(u, "");
+		v.addPessoaNaViagem(new Usuario("Ítalo", "italo.lins@ccc.ufcg.edu.br", "123"), "");
 		viagem.add(v);
 	}
 	
@@ -40,11 +42,20 @@ public class ControladorDeBD {
 		return controlador;
 	}
 	
+	@Transactional
 	public void addViagem(Viagem v){
+//		getDao().persist(v);
+//		getDao().flush();
+		
+		//lembrar d tirar isso aqui
 		viagem.add(v);
 	}
 	
+	@Transactional
 	public List<Viagem> getViagens(){
+		
+		//return getDao().findAllByClassName("Viagem");
+		
 		return viagem;
 	}
 
@@ -57,7 +68,12 @@ public class ControladorDeBD {
 		return null;
 	}
 
+	@Transactional
 	public void addUsuario(Usuario u) {
+//		getDao().persist(u);
+//		getDao().flush();
+		
+		//lembrar d remover isso!
 		usuarios.add(u);
 	}
 
@@ -80,12 +96,12 @@ public class ControladorDeBD {
 		}
 	}
 	
-//	public static GenericDAO getDao() {
-//		return dao;
-//	}
-//
-//	public static void setDao(GenericDAO dao) {
-//		ControladorDeBD.dao = dao;
-//	}
+	public static GenericDAO getDao() {
+		return dao;
+	}
+
+	public static void setDao(GenericDAO dao) {
+		ControladorDeBD.dao = dao;
+	}
 
 }

@@ -21,9 +21,9 @@ public class Application extends Controller {
     	if(session().get("user") == null){
     		return ok(login.render());
     	}    	
-
-    	Viagem v = new Viagem("local","data","descricao");
     	Usuario u = new Usuario("nome","email","senha");
+    	Viagem v = new Viagem("local","data","descricao",u);
+    	
     	v.addPessoaNaViagem(u, null);
         return ok(index.render("Your new application is ready.", controlador));
     }
@@ -65,9 +65,11 @@ public class Application extends Controller {
     	String ano = requestData.get("ano");
     	String senha = requestData.get("senha");
     	
+    	Usuario user = controlador.getUsuario(session().get("email"));
+    	
     	data = dia + "/" + mes + "/" + ano;
     	
-    	Viagem v = new Viagem(local,data,descricao);
+    	Viagem v = new Viagem(local,data,descricao,user);
     	v.setCadastro(new CadastroAberto(), senha);
     	controlador.addViagem(v);
     	
