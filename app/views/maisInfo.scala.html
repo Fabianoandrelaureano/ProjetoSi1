@@ -24,11 +24,27 @@
                     <tbody>  
                                                   	
                         <tr>
-                            <td>@viagem.getLocal()</td>
-                            <td>@viagem.getDescricao()</td>
-                            <td>@viagem.getOrganizador().getNome()</td>                     
-                            <td>@viagem.getData()</td>
-                            
+
+                            @if(session().get("email").equals(viagem.getOrganizador().getEmail())){
+                            <form action = "/editarViagem" method = "post">
+                            	<td>@viagem.getLocal()</td>
+                            	<td>
+                            	<input class="input-xlarge" size="25" id="focusedInput" type="text" value="@viagem.getDescricao()" name=descricao>
+                            	</td>
+                            	<td>@viagem.getOrganizador().getNome()</td>
+                            	<td>
+                            	<input class="input-xlarge" size="25" id="focusedInput" type="text" value="@viagem.getData()" name=data>
+                            	</td>
+                            	<td>
+                            	<input type="submit" class="btn btn-primary" value="Editar">
+                            	</td>
+                            </form>
+                            }else{
+                            	<td>@viagem.getLocal()</td>
+                            	<td>@viagem.getDescricao()</td>
+                            	<td>@viagem.getOrganizador().getNome()</td>                     
+                            	<td>@viagem.getData()</td>
+                            }
                                                       
                         </tr> 
                                                          
@@ -52,8 +68,16 @@
                         <tr>
                             <td>@usuario.getNome()</td>
                             <td>@usuario.getEmail()</td>
-                            
-                                                     
+                            @if(session().get("email").equals(usuario.getEmail())){
+                            <td>
+                            	<form action="/desistirViagem" method="post">
+                            		<input type="hidden" name="local" value="@viagem.getLocal()">                                   
+                                	<input type="submit" class="btn btn-primary" value="Desistir">
+                            	</form>
+                            </td>
+                            }else{
+                            	<td></td>
+                            }                              
                         </tr> 
                     }                                           
                     </tbody>

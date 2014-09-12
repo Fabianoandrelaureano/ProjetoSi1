@@ -12,6 +12,9 @@ POST	/infoViagem						controllers.Application.infoViagem()
 
 POST	/participarViagem				controllers.Application.participarViagem()
 
+POST	/editarViagem					controllers.Application.editarViagem()
+POST	/desistirViagem					controllers.Application.desistirViagem()
+
 # Login
 GET     /login                           controllers.Login.show()
 POST    /login                           controllers.Login.authenticate()

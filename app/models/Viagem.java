@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 //@Entity(name="Viagem")
 public class Viagem {
@@ -89,7 +90,7 @@ public class Viagem {
 
 	public void addPessoaNaViagem(Usuario u,String senha) {
 		cadastro.addParticipanteNaViagem(this, u, senha);
-		//pessoasNaViagem.add(u);		
+//		pessoasNaViagem.add(u);		
 	}
 	
 	public List<Usuario> getParticipantes(){
@@ -119,6 +120,10 @@ public class Viagem {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public void removeParticipante(Usuario usuario) {
+		this.pessoasNaViagem.remove(usuario);
 	}
 
 }

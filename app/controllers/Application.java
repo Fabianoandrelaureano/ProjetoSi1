@@ -76,6 +76,31 @@ public class Application extends Controller {
     	return ok(index.render("=p",controlador));
     }
     
+    public static Result editarViagem(){
+    	DynamicForm requestData = Form.form().bindFromRequest();
+    	
+    	String local = requestData.get("local");
+    	String descricao = requestData.get("descricao");
+    	
+    	Viagem v = controlador.getViagem(local);
+    	v.setDescricao(descricao);
+    	
+    	return ok(maisInfo.render(v));
+    }
+    
+    public static Result desistirViagem(){
+    	DynamicForm request = Form.form().bindFromRequest();
+    	
+    	String local = request.get("local");
+    	
+    	Viagem v = controlador.getViagem(local);
+    	
+    	v.removeParticipante(controlador.getUsuario(session().get("email")));
+    	
+    	return ok(index.render("Your new application is ready.", controlador));
+    
+    }
+    
 //    public static GenericDAO getDao() {
 //		return dao;
 //	}
