@@ -28,7 +28,7 @@ public class ControladorDeBD {
 				new Usuario("Dalton", "dalton@outlook.com", "123"), new Usuario("Wilkerson", "wilkerson@outlook.com", "123"), new Usuario("Leandro", "leandro@outlook.com", "123"), new Usuario("Leonardo", "leonardo@outlook.com", "123"), new Usuario("Chitaozinho", "chitaozinho@outlook.com", "123"), 
 				new Usuario("Xororo", "xororo@gmail.com", "123"), new Usuario("Pele", "pele@gmail.com", "123"), new Usuario("Ronaldo", "ronaldo@gmail.com", "123"), new Usuario("Naoli", "naoli@gmail.com", "123"), new Usuario("Nemlerei", "nemlerei@gmail.com", "123")}; 		
 		for (Usuario user:users){
-			usuarios.add(user);
+			addUsuario(user);
 		}
 		
 		v.addPessoaNaViagem(new Usuario("Ítalo", "italo.lins@ccc.ufcg.edu.br", "123"), "");
