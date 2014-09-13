@@ -50,7 +50,7 @@ public class Viagem {
 		
 	}
 	
-	public Viagem(String local, String data, String descricao,Usuario organizador) {
+	public Viagem(String local, String data, String descricao, Usuario organizador) {
 		this.setLocal(local);
 		this.setData(data);
 		this.setDescricao(descricao);
