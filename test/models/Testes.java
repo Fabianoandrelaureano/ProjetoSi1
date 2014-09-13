@@ -48,6 +48,22 @@ public class Testes {
 	}
 	
 	@Test
+	public void naoDeveAdicionarUsuariosIguaisNaViagem() {
+		Viagem v1 = new Viagem("local", "data", "descricao", u1);
+		
+		Assert.assertEquals(v1.getNumeroDePessoasNaViagem(), 0);
+		
+		v1.addPessoaNaViagem(u1, "");
+		
+		Assert.assertEquals(v1.getNumeroDePessoasNaViagem(), 1);
+		
+		v1.addPessoaNaViagem(u3, "");
+		
+		Assert.assertEquals(v1.getNumeroDePessoasNaViagem(), 1);
+
+	}
+	
+	@Test
 	public void deveEstaNaViagem() {
 		Viagem v1 = new Viagem("local", "data", "descricao", u1);
 		
