@@ -6,9 +6,12 @@
 	<li><a href="/criarViagem">Criar uma nova viagem</a></li>
 
 </ul>
+
 <div class="container form-horizontal panel panel-primary text-info">
+@if(session().get("email").equals(viagem.getOrganizador().getEmail())){
 	<div class="table-responsive">
 		<table class="table table-hover">
+		
 			<thead>
 				<tr>
 					<th>Local</th>
@@ -25,7 +28,7 @@
 
 				<tr>
 
-					@if(session().get("email").equals(viagem.getOrganizador().getEmail())){
+					
 					<form action="/editarViagem" method="post">
 						<td>@viagem.getLocal()</td>
 						<td><input type="hidden" name="local"
@@ -90,18 +93,21 @@
 						<td><input type="submit" class="btn btn-primary"
 							value="Editar"></td>
 					</form>
-					}else{
-					<td>@viagem.getLocal()</td>
-					<td>@viagem.getDescricao()</td>
-					<td>@viagem.getOrganizador().getNome()</td>
-					<td>@viagem.getData()</td> }
-
 				</tr>
+					
+				
 
 			</tbody>
 		</table>
-	</div>
+	</div>}else{
+					
+					<center><h2>Local: @viagem.getLocal()</h2></center><br>
+					<center><p class = "lead">@viagem.getDescricao()</p></center>
+					<center><p class = "lead">Organizador: @viagem.getOrganizador().getNome()</p></center>
+					<center><p class = "lead">Data: @viagem.getData()</p></center> 
+					}
 </div>
+
 
 <div class="container form-horizontal panel panel-primary text-info">
 

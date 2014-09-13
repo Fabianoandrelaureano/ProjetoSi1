@@ -15,13 +15,13 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-//	@Column
+	@Column
 	private String nome;
 	
-//	@Column
+	@Column
 	private String email;
 	
-//	@Column
+	@Column
 	private String senha;
 
 	public Usuario(){
@@ -76,19 +76,12 @@ public class Usuario {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if(!(obj instanceof Usuario)){
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		return true;
+		}else{
+			Usuario pessoa = (Usuario)obj;
+			return (pessoa.getEmail().equals(this.email));
+		}
 	}
 
 }
