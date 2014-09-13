@@ -1,91 +1,138 @@
 @(viagem: Viagem)
 
 @main("Home Page") {
-	<ul class="nav nav-pills">
-          <li><a href="/"">Home</a></li>
-          <li><a href="/criarViagem">Criar uma nova viagem</a></li>
-          
-        </ul>
-	<div class="container form-horizontal panel panel-primary text-info" >
+<ul class="nav nav-pills">
+	<li><a href="/"">Home</a></li>
+	<li><a href="/criarViagem">Criar uma nova viagem</a></li>
+
+</ul>
+<div class="container form-horizontal panel panel-primary text-info">
 	<div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Local </th>
-                            <th>Descricao </th>
-                          	<th>Organizador</th>
-                            <th>Data</th>
-                            
-                            
-                           
-                        </tr>
-                    </thead>
-                    
-                    <tbody>  
-                                                  	
-                        <tr>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Local</th>
+					<th>Descricao</th>
+					<th>Organizador</th>
+					<th>Data</th>
 
-                            @if(session().get("email").equals(viagem.getOrganizador().getEmail())){
-                            <form action = "/editarViagem" method = "post">
-                            	<td>@viagem.getLocal()</td>
-                            	<td>
-                            	
-                            	<input type="hidden" name="local" value="@viagem.getLocal()"> 
-                            	<input class="input-xlarge" size="25" id="focusedInput" type="text" value="@viagem.getDescricao()" name="descricao">
-                            	</td>
-                            	<td>@viagem.getOrganizador().getNome()</td>
-                            	<td>
-                            	<input type="date" name = "dat">
-                            	<input class="input-xlarge" size="25" id="focusedInput" type="text" value="@viagem.getData()" name="data">
-                            	</td>
-                            	<td>
-                            	<input type="submit" class="btn btn-primary" value="Editar">
-                            	</td>
-                            </form>
-                            }else{
-                            	<td>@viagem.getLocal()</td>
-                            	<td>@viagem.getDescricao()</td>
-                            	<td>@viagem.getOrganizador().getNome()</td>                     
-                            	<td>@viagem.getData()</td>
-                            }
-                                                      
-                        </tr> 
-                                                         
-                    </tbody>
-                </table>
-            </div></div>
-	
-      <div class="container form-horizontal panel panel-primary text-info" >
 
-<div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Nome </th>
-                            <th>Email </th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>  
-                    @for(usuario <- viagem.getParticipantes()){                                     	
-                        <tr>
-                            <td>@usuario.getNome()</td>
-                            <td>@usuario.getEmail()</td>
-                            @if(session().get("email").equals(usuario.getEmail())){
-                            <td>
-                            	<form action="/desistirViagem" method="post">
-                            		<input type="hidden" name="local" value="@viagem.getLocal()">                                   
-                                	<input type="submit" class="btn btn-primary" value="Desistir">
-                            	</form>
-                            </td>
-                            }else{
-                            	<td></td>
-                            }                              
-                        </tr> 
-                    }                                           
-                    </tbody>
-                </table>
-            </div></div>
 
-        
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr>
+
+					@if(session().get("email").equals(viagem.getOrganizador().getEmail())){
+					<form action="/editarViagem" method="post">
+						<td>@viagem.getLocal()</td>
+						<td><input type="hidden" name="local"
+							value="@viagem.getLocal()"> <input class="input-xlarge"
+							size="25" id="focusedInput" type="text"
+							value="@viagem.getDescricao()" name="descricao"></td>
+						<td>@viagem.getOrganizador().getNome()</td>
+						<td><input class="input-xlarge" size="25" id="focusedInput"
+							type="text" value="@viagem.getData()" name="data"> <select
+							name="dia">
+								<option name="01">01</option>
+								<option name="02">02</option>
+								<option name="03">03</option>
+								<option name="04">04</option>
+								<option name="05">05</option>
+								<option name="06">06</option>
+								<option name="07">07</option>
+								<option name="08">08</option>
+								<option name="dia">09</option>
+								<option name="dia">10</option>
+								<option name="dia">11</option>
+								<option name="dia">12</option>
+								<option name="dia">13</option>
+								<option name="dia">14</option>
+								<option name="dia">15</option>
+								<option name="dia">16</option>
+								<option name="dia">17</option>
+								<option name="dia">18</option>
+								<option name="dia">19</option>
+								<option name="dia">20</option>
+								<option name="dia">21</option>
+								<option name="dia">22</option>
+								<option name="dia">23</option>
+								<option name="dia">24</option>
+								<option name="dia">25</option>
+								<option name="dia">26</option>
+								<option name="dia">27</option>
+								<option name="dia">28</option>
+								<option name="dia">29</option>
+								<option name="dia">30</option>
+								<option name="dia">31</option>
+						</select> <select name="mes">
+								<option name="Janeiro">Janeiro</option>
+								<option name="Fevereiro">Fevereiro</option>
+								<option name="Março">Março</option>
+								<option name="Abril">Abril</option>
+								<option name="Maio">Maio</option>
+								<option name="Junho">Junho</option>
+								<option name="Julho">Julho</option>
+								<option name="Agosto">Agosto</option>
+								<option name="Setembro">Setembro</option>
+								<option name="Outubro">Outubro</option>
+								<option name="Novembro">Novembro</option>
+								<option name="Desembro">Desembro</option>
+						</select> <select name="ano">
+								<option name="2014">2014</option>
+								<option name="2015">2015</option>
+								<option name="2016">2016</option>
+								<option name="2017">2017</option>
+								<option name="2018">2018</option>
+						</select></td>
+						<td><input type="submit" class="btn btn-primary"
+							value="Editar"></td>
+					</form>
+					}else{
+					<td>@viagem.getLocal()</td>
+					<td>@viagem.getDescricao()</td>
+					<td>@viagem.getOrganizador().getNome()</td>
+					<td>@viagem.getData()</td> }
+
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="container form-horizontal panel panel-primary text-info">
+
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				@for(usuario <- viagem.getParticipantes()){
+				<tr>
+					<td>@usuario.getNome()</td>
+					<td>@usuario.getEmail()</td>
+					@if(session().get("email").equals(usuario.getEmail())){
+					<td>
+						<form action="/desistirViagem" method="post">
+							<input type="hidden" name="local" value="@viagem.getLocal()">
+							<input type="submit" class="btn btn-primary" value="Desistir">
+						</form>
+					</td> }else{
+					<td></td> }
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
 }

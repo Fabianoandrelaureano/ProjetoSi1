@@ -37,7 +37,7 @@ public class Viagem {
 	private List<Usuario> pessoasNaViagem;
 	
 	
-	private CadastroNaViagem cadastro;
+//	private CadastroNaViagem cadastro;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 //	@JoinColumn
@@ -55,7 +55,7 @@ public class Viagem {
 		this.setData(data);
 		this.setDescricao(descricao);
 		pessoasNaViagem = new ArrayList<Usuario>();
-		cadastro = new CadastroAberto();
+//		cadastro = new CadastroAberto();
 		senha = "";
 		this.organizador = organizador;
 	}
@@ -90,12 +90,11 @@ public class Viagem {
 
 	public void addPessoaNaViagem(Usuario u,String senha) {
 		if (pessoasNaViagem.isEmpty()) {
-			cadastro.addParticipanteNaViagem(this, u, senha);
+			pessoasNaViagem.add(u);
+//			cadastro.addParticipanteNaViagem(this, u, senha);
 		}else {
-			for (int i = 0; i < pessoasNaViagem.size(); i++) {
-				if (!u.equals(pessoasNaViagem.get(i))) {
-					cadastro.addParticipanteNaViagem(this, u, senha);
-				}
+			if(!pessoasNaViagem.contains(u)){
+				pessoasNaViagem.add(u);
 			}
 		}
 //		pessoasNaViagem.add(u);		
