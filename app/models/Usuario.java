@@ -12,11 +12,10 @@ import javax.persistence.Table;
 public class Usuario {
 	
 	@Id
-	@SequenceGenerator(name = "USUARIO_SEQUENCE", sequenceName = "USUARIO_SEQUENCE", allocationSize = 1, initialValue = 0)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	@Column
+//	@Column
 	private String nome;
 	
 //	@Column

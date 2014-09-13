@@ -10,6 +10,7 @@ import models.Viagem;
 import play.*;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.db.jpa.Transactional;
 import play.mvc.*;
 import views.html.*;
 
@@ -17,6 +18,7 @@ public class Application extends Controller {
 	//private static GenericDAO dao = new GenericDAOImpl();
 	private static ControladorDeBD controlador = ControladorDeBD.getInstance();
 	
+	@Transactional
     public static Result index() {
     	if(session().get("user") == null){
     		return ok(login.render());
@@ -28,6 +30,7 @@ public class Application extends Controller {
         return ok(index.render("Your new application is ready.", controlador));
     }
     
+	@Transactional
     public static Result participarViagem(){
     	DynamicForm requestData = Form.form().bindFromRequest();
     	
@@ -41,6 +44,7 @@ public class Application extends Controller {
     	return ok(index.render(" ", controlador));
     }
     
+	@Transactional
     public static Result infoViagem(){
     	DynamicForm requestData = Form.form().bindFromRequest();
     	
@@ -50,10 +54,12 @@ public class Application extends Controller {
     	return ok(maisInfo.render(v));
     }
     
+	@Transactional
     public static Result criaViagem(){
     	return ok(cadastroViagens.render("Your new application is ready."));
     }
-
+	
+	@Transactional
     public static Result novaViagem(){
     	DynamicForm requestData = Form.form().bindFromRequest();
     	
@@ -70,12 +76,13 @@ public class Application extends Controller {
     	data = dia + "/" + mes + "/" + ano;
     	
     	Viagem v = new Viagem(local,data,descricao,user);
-    	v.setCadastro(new CadastroAberto(), senha);
+//    	v.setCadastro(new CadastroAberto(), senha);
     	controlador.addViagem(v);
     	
     	return ok(index.render("=p",controlador));
     }
     
+	@Transactional
     public static Result editarViagem(){
     	DynamicForm requestData = Form.form().bindFromRequest();
     	
@@ -88,6 +95,7 @@ public class Application extends Controller {
     	return ok(maisInfo.render(v));
     }
     
+	@Transactional
     public static Result desistirViagem(){
     	DynamicForm request = Form.form().bindFromRequest();
     	

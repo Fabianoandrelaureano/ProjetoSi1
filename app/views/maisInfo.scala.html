@@ -29,11 +29,14 @@
                             <form action = "/editarViagem" method = "post">
                             	<td>@viagem.getLocal()</td>
                             	<td>
-                            	<input class="input-xlarge" size="25" id="focusedInput" type="text" value="@viagem.getDescricao()" name=descricao>
+                            	
+                            	<input type="hidden" name="local" value="@viagem.getLocal()"> 
+                            	<input class="input-xlarge" size="25" id="focusedInput" type="text" value="@viagem.getDescricao()" name="descricao">
                             	</td>
                             	<td>@viagem.getOrganizador().getNome()</td>
                             	<td>
-                            	<input class="input-xlarge" size="25" id="focusedInput" type="text" value="@viagem.getData()" name=data>
+                            	<input type="date" name = "dat">
+                            	<input class="input-xlarge" size="25" id="focusedInput" type="text" value="@viagem.getData()" name="data">
                             	</td>
                             	<td>
                             	<input type="submit" class="btn btn-primary" value="Editar">

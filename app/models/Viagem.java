@@ -10,17 +10,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-//@Entity(name="Viagem")
+@Entity(name="Viagem")
 public class Viagem {
 	
-//	@Id
-//	@SequenceGenerator(name = "VIAGEM_SEQUENCE", sequenceName = "VIAGEM_SEQUENCE", allocationSize = 1, initialValue = 0)
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
 //	@Column
@@ -32,14 +32,14 @@ public class Viagem {
 //	@Column
 	private String descricao;
 	
-//	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL)
 //	@JoinColumn  
 	private List<Usuario> pessoasNaViagem;
 	
 	
-	private CadastroNaViagem cadastro;
+//	private CadastroNaViagem cadastro;
 	
-//	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 //	@JoinColumn
 	private Usuario organizador;
 	
@@ -55,7 +55,7 @@ public class Viagem {
 		this.setData(data);
 		this.setDescricao(descricao);
 		pessoasNaViagem = new ArrayList<Usuario>();
-		cadastro = new CadastroAberto();
+//		cadastro = new CadastroAberto();
 		senha = "";
 		this.organizador = organizador;
 	}
@@ -89,18 +89,18 @@ public class Viagem {
 	}
 
 	public void addPessoaNaViagem(Usuario u,String senha) {
-		cadastro.addParticipanteNaViagem(this, u, senha);
-//		pessoasNaViagem.add(u);		
+//		cadastro.addParticipanteNaViagem(this, u, senha);
+		pessoasNaViagem.add(u);		
 	}
 	
 	public List<Usuario> getParticipantes(){
 		return pessoasNaViagem;
 	}
 	
-	public void setCadastro(CadastroNaViagem cadastro,String senha){
-		this.cadastro = cadastro;
-		this.senha = senha;
-	}
+//	public void setCadastro(CadastroNaViagem cadastro,String senha){
+//		this.cadastro = cadastro;
+//		this.senha = senha;
+//	}
 	
 	public String getSenha(){
 		return this.senha;

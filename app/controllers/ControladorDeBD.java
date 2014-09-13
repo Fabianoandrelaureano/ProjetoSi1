@@ -35,6 +35,7 @@ public class ControladorDeBD {
 		viagem.add(v);
 	}
 	
+	@Transactional
 	public static ControladorDeBD getInstance(){
 		if(controlador == null){
 			controlador = new ControladorDeBD();
@@ -59,7 +60,9 @@ public class ControladorDeBD {
 		return viagem;
 	}
 
+	@Transactional
 	public Usuario getUsuario(String email) {
+//		List<Usuario> usuarios = getDao().findAllByClassName("Usuario");
 		for(Usuario u: usuarios){
 			if(u.getEmail().equals(email)){
 				return u;
@@ -77,7 +80,9 @@ public class ControladorDeBD {
 		usuarios.add(u);
 	}
 
+	@Transactional
 	public Viagem getViagem(String local) {
+//		List<Viagem> viagem = getDao().findAllByClassName("Viagem");
 		for(Viagem v: viagem){
 			if(v.getLocal().equals(local)){
 				return v;
@@ -86,8 +91,10 @@ public class ControladorDeBD {
 		return null;
 	}
 
+	@Transactional
 	public void participarViagem(Usuario u, Viagem v2,String senha) {
 		if(v2 != null){
+//			List<Viagem> viagem = getDao().findAllByClassName("Viagem");
 			for(Viagem v: viagem){
 				if(v.getLocal().equals(v2.getLocal()) && v.getSenha().equals(senha)){
 					v.addPessoaNaViagem(u,"");
