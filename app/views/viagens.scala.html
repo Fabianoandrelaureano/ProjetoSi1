@@ -4,19 +4,17 @@
 <div class="row">
 	@for(viagem <- controlador.getViagens()){
 	<div class="col-6 col-sm-6 col-lg-4">
-		<div class="container form-horizontal panel panel-primary text-info">
+		<div class="container form-horizontal panel panel-primary text-info" style= "width:400px; height:175px;">
 			<h2>@viagem.getLocal()</h2>
 			<p>@viagem.getDescricao()</p>
 			<form action="/infoViagem" method="post">
 				<input type="hidden" name="local" value="@viagem.getLocal()">
 				<p>
-					<input type="submit" class="btn btn-primary" value="Info">
+					<input type="submit" class="btn btn-primary" value="Mais Detalhes >>">
 				</p>
 			</form>
 
 		</div>
 	</div>
 	}
-
-
 </div>
