@@ -33,21 +33,24 @@ public class Viagem {
 	private String descricao;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn  
+	@JoinColumn  
 	private List<Usuario> pessoasNaViagem;
 	
 	
 //	private CadastroNaViagem cadastro;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-//	@JoinColumn
+	@JoinColumn
 	private Usuario organizador;
 	
 //	@Column
 	private String senha;
 	
 	public Viagem(){
-		
+		this.local = null;
+		this.descricao = null;
+		this.data = null;
+		this.organizador = null;
 	}
 	
 	public Viagem(String local, String data, String descricao, Usuario organizador) {

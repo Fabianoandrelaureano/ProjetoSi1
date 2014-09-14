@@ -9,6 +9,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.db.jpa.Transactional;
 import views.html.login;
 
 public class Login extends Controller {
@@ -24,13 +25,13 @@ public class Login extends Controller {
         return ok(login.render());
     }
 	
-	
+    @Transactional
 	public static Result logout() {
 		session().clear();
 		return ok(login.render());
 	}
     
-
+	@Transactional
 	public static Result authenticate() {
 		
 		DynamicForm requestData = Form.form().bindFromRequest();
@@ -54,6 +55,7 @@ public class Login extends Controller {
         }
     }
 	
+	@Transactional
 	private static boolean validate(String email, String senha) {
 		Usuario u = controlador.getUsuario(email);
 		if(u == null) return false;

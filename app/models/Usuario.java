@@ -25,7 +25,9 @@ public class Usuario {
 	private String senha;
 
 	public Usuario(){
-		
+		this.senha = null;
+		this.email = null;
+		this.nome = null;
 	}
 	
 	public Usuario(String nome, String email, String senha) {

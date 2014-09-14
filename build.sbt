@@ -4,7 +4,6 @@ version := "1.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
   javaJdbc,
-  javaEbean,
   cache,
   javaJpa,
   "org.apache.directory.api" % "api-all" % "1.0.0-M14",

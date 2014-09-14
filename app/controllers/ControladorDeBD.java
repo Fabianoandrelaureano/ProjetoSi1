@@ -15,8 +15,8 @@ public class ControladorDeBD {
 	
 	private static ControladorDeBD controlador;
 	private Viagem v = new Viagem("Tanga","1/1/2015","descricao",new Usuario("Ítalo", "italo.lins@ccc.ufcg.edu.br", "123"));
-	private List<Viagem> viagem = new ArrayList<Viagem>();
-	private List<Usuario> usuarios = new ArrayList<Usuario>();
+//	private List<Viagem> viagem = new ArrayList<Viagem>();
+//	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	private ControladorDeBD(){
 		Usuario[] users = {new Usuario("Ítalo", "italo.lins@ccc.ufcg.edu.br", "123"), new Usuario("Fabiano", "fabiano.laureano@ccc.ufcg.edu.br", "123"), new Usuario("Wellington", "wellington.araujo.silva@ccc.ufcg.edu.br", "123"), new Usuario("Guilherme", "guilherme@gmail.com", "123"), new Usuario("Gustavo", "gustavo@gmail.com", "123"), 
@@ -55,24 +55,26 @@ public class ControladorDeBD {
 	
 	@Transactional
 	public void addViagem(Viagem v){
+		
+		persist(v);
 //		getDao().persist(v);
 //		getDao().flush();
 		
 		//lembrar d tirar isso aqui
-		viagem.add(v);
+//		viagem.add(v);
 	}
 	
 	@Transactional
 	public List<Viagem> getViagens(){
 		
-		//return getDao().findAllByClassName("Viagem");
+		return getDao().findAllByClassName("Viagem");
 		
-		return viagem;
+//		return viagem;
 	}
 
 	@Transactional
 	public Usuario getUsuario(String email) {
-//		List<Usuario> usuarios = getDao().findAllByClassName("Usuario");
+		List<Usuario> usuarios = getDao().findAllByClassName("Usuario");
 		for(Usuario u: usuarios){
 			if(u.getEmail().equals(email)){
 				return u;
@@ -83,16 +85,18 @@ public class ControladorDeBD {
 
 	@Transactional
 	public void addUsuario(Usuario u) {
+		persist(u);
+		
 //		getDao().persist(u);
 //		getDao().flush();
 		
 		//lembrar d remover isso!
-		usuarios.add(u);
+//		usuarios.add(u);
 	}
 
 	@Transactional
 	public Viagem getViagem(String local) {
-//		List<Viagem> viagem = getDao().findAllByClassName("Viagem");
+		List<Viagem> viagem = getDao().findAllByClassName("Viagem");
 		for(Viagem v: viagem){
 			if(v.getLocal().equals(local)){
 				return v;
@@ -104,7 +108,7 @@ public class ControladorDeBD {
 	@Transactional
 	public void participarViagem(Usuario u, Viagem v2,String senha) {
 		if(v2 != null){
-//			List<Viagem> viagem = getDao().findAllByClassName("Viagem");
+			List<Viagem> viagem = getDao().findAllByClassName("Viagem");
 			for(Viagem v: viagem){
 				if(v.getLocal().equals(v2.getLocal()) && v.getSenha().equals(senha)){
 					v.addPessoaNaViagem(u,"");
@@ -119,6 +123,27 @@ public class ControladorDeBD {
 
 	public static void setDao(GenericDAO dao) {
 		ControladorDeBD.dao = dao;
+	}
+	
+	@Transactional
+	private static <T> Object persist(Object object) {
+		List<T> result = dao.findAllByClassName(object.getClass().getSimpleName());
+		if (!result.contains(object)) {
+			dao.persist(object);
+			dao.flush();
+		}
+		return getObjectBD(object);
+	}
+
+	@Transactional
+	private static <T> Object getObjectBD(Object object) {
+		List<T> result = dao.findAllByClassName(object.getClass().getSimpleName());
+		for (Object o : result) {
+			if(o.equals(object)){
+				return o;
+			}
+		}
+		return null;
 	}
 
 }

@@ -8,6 +8,7 @@ import models.Usuario;
 import models.Usuario;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.registro;
@@ -22,6 +23,7 @@ public class Registro extends Controller {
         return ok(registro.render());
     }
     
+    @Transactional
 	public static Result registrar() throws Exception {
 		DynamicForm requestData = Form.form().bindFromRequest();
     	
@@ -44,6 +46,7 @@ public class Registro extends Controller {
         }
     }
 	
+    @Transactional
 	private static boolean validate(String email) {
 		Usuario u = controlador.getUsuario(email);
 		return u == null;
