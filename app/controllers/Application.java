@@ -76,7 +76,7 @@ public class Application extends Controller {
     	data = dia + "/" + mes + "/" + ano;
     	
     	Viagem v = new Viagem(local,data,descricao,user);
-//    	v.setCadastro(new CadastroAberto(), senha);
+    	v.addPessoaNaViagem(user, senha);
     	controlador.addViagem(v);
     	
     	return ok(index.render("=p",controlador));
