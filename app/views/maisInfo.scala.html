@@ -9,82 +9,87 @@
 	@if(session().get("email").equals(viagem.getOrganizador().getEmail())){
 	<div class="table-responsive">
 		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Local</th>
-					<th>Descricao</th>
-					<th>Organizador</th>
-					<th>Data</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<form action="/editarViagem" method="post">
-						<td>@viagem.getLocal()</td>
-						<td><input type="hidden" name="local"
-							value="@viagem.getLocal()"> <textarea class="input-xlarge"
-							size="25" id="focusedInput" type="text"
-							value="@viagem.getDescricao()" name="descricao">@viagem.getDescricao()</textarea></td>
-						<td>@viagem.getOrganizador().getNome()</td>
-						<td><input class="input-xlarge" size="25" id="focusedInput"
-							type="text" value="@viagem.getData()" name="data"> <select
-							name="dia">
-								<option name="01">01</option>
-								<option name="02">02</option>
-								<option name="03">03</option>
-								<option name="04">04</option>
-								<option name="05">05</option>
-								<option name="06">06</option>
-								<option name="07">07</option>
-								<option name="08">08</option>
-								<option name="dia">09</option>
-								<option name="dia">10</option>
-								<option name="dia">11</option>
-								<option name="dia">12</option>
-								<option name="dia">13</option>
-								<option name="dia">14</option>
-								<option name="dia">15</option>
-								<option name="dia">16</option>
-								<option name="dia">17</option>
-								<option name="dia">18</option>
-								<option name="dia">19</option>
-								<option name="dia">20</option>
-								<option name="dia">21</option>
-								<option name="dia">22</option>
-								<option name="dia">23</option>
-								<option name="dia">24</option>
-								<option name="dia">25</option>
-								<option name="dia">26</option>
-								<option name="dia">27</option>
-								<option name="dia">28</option>
-								<option name="dia">29</option>
-								<option name="dia">30</option>
-								<option name="dia">31</option>
-						</select> <select name="mes">
-								<option name="Janeiro">Janeiro</option>
-								<option name="Fevereiro">Fevereiro</option>
-								<option name="Março">Março</option>
-								<option name="Abril">Abril</option>
-								<option name="Maio">Maio</option>
-								<option name="Junho">Junho</option>
-								<option name="Julho">Julho</option>
-								<option name="Agosto">Agosto</option>
-								<option name="Setembro">Setembro</option>
-								<option name="Outubro">Outubro</option>
-								<option name="Novembro">Novembro</option>
-								<option name="Desembro">Desembro</option>
-						</select> <select name="ano">
-								<option name="2014">2014</option>
-								<option name="2015">2015</option>
-								<option name="2016">2016</option>
-								<option name="2017">2017</option>
-								<option name="2018">2018</option>
-						</select></td>
-						<td><input type="submit" class="btn btn-primary"
-							value="Editar"></td>
-					</form>
-				</tr>
-			</tbody>
+
+
+			<form action="/editarViagem">
+				<center>
+					<h2>Local: @viagem.getLocal()</h2>
+					<input type="hidden" name="local" value="@viagem.getLocal()">
+				</center>
+				<br>
+				<center>
+					<textarea class="input-xlarge" size="25" id="focusedInput"
+						type="text" value="@viagem.getDescricao()" name="descricao"
+						style="width: 400px; height: 150px;">@viagem.getDescricao()</textarea>
+				</center>
+				<br>
+				<center>
+					<p class="lead">@viagem.getOrganizador().getNome()</p>
+				</center>
+				<center>
+					<p class="lead">@viagem.getData()</p>
+				</center>
+				<center>
+					<select name="dia">
+						<option name="01">01</option>
+						<option name="02">02</option>
+						<option name="03">03</option>
+						<option name="04">04</option>
+						<option name="05">05</option>
+						<option name="06">06</option>
+						<option name="07">07</option>
+						<option name="08">08</option>
+						<option name="dia">09</option>
+						<option name="dia">10</option>
+						<option name="dia">11</option>
+						<option name="dia">12</option>
+						<option name="dia">13</option>
+						<option name="dia">14</option>
+						<option name="dia">15</option>
+						<option name="dia">16</option>
+						<option name="dia">17</option>
+						<option name="dia">18</option>
+						<option name="dia">19</option>
+						<option name="dia">20</option>
+						<option name="dia">21</option>
+						<option name="dia">22</option>
+						<option name="dia">23</option>
+						<option name="dia">24</option>
+						<option name="dia">25</option>
+						<option name="dia">26</option>
+						<option name="dia">27</option>
+						<option name="dia">28</option>
+						<option name="dia">29</option>
+						<option name="dia">30</option>
+						<option name="dia">31</option>
+					</select> <select name="mes">
+						<option name="Janeiro">Janeiro</option>
+						<option name="Fevereiro">Fevereiro</option>
+						<option name="Março">Março</option>
+						<option name="Abril">Abril</option>
+						<option name="Maio">Maio</option>
+						<option name="Junho">Junho</option>
+						<option name="Julho">Julho</option>
+						<option name="Agosto">Agosto</option>
+						<option name="Setembro">Setembro</option>
+						<option name="Outubro">Outubro</option>
+						<option name="Novembro">Novembro</option>
+						<option name="Desembro">Desembro</option>
+					</select> <select name="ano">
+						<option name="2014">2014</option>
+						<option name="2015">2015</option>
+						<option name="2016">2016</option>
+						<option name="2017">2017</option>
+						<option name="2018">2018</option>
+					</select>
+				</center>
+				<br>
+				<center>
+					<input type="submit" class="btn btn-primary" value="Editar">
+				</center>
+			</form>
+
+
 		</table>
 	</div>
 	}else{
@@ -103,14 +108,12 @@
 		<p class="lead">Data: @viagem.getData()</p>
 	</center>
 	<center>
-	<form action="/participarViagem" method="post">
-		<input class="input-xxlarge" type="text" size="10" maxlength="10"
-			placeholder="Senha" name="senha"> 
-		<input type="hidden"
-			name="local" value="@viagem.getLocal()"> 
-		<input type="submit"
-			class="btn btn-primary" value="Participar">
-	</form>
+		<form action="/participarViagem" method="post">
+			<input class="input-xxlarge" type="text" size="10" maxlength="10"
+				placeholder="Senha" name="senha"> <input type="hidden"
+				name="local" value="@viagem.getLocal()"> <input
+				type="submit" class="btn btn-primary" value="Participar">
+		</form>
 	</center>
 	}
 </div>

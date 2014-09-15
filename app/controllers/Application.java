@@ -109,11 +109,8 @@ public class Application extends Controller {
     
     }
     
-//    public static GenericDAO getDao() {
-//		return dao;
-//	}
-//
-//	public static void setDao(GenericDAO dao) {
-//		Application.dao = dao;
-//	}
+	@Transactional
+	public static Result minhaConta(){
+		return ok(minhaConta.render(controlador.getUsuario(session().get("email")),controlador));
+	}
 }

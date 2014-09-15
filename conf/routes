@@ -5,6 +5,7 @@
 # Home page
 GET     /                           	 controllers.Application.index()
 GET     /logout							 controllers.Login.logout()
+GET		/minhaConta						controllers.Application.minhaConta()
 
 GET		/criarViagem					controllers.Application.criaViagem()
 POST	/criarViagem					controllers.Application.novaViagem()
@@ -12,7 +13,7 @@ POST	/infoViagem						controllers.Application.infoViagem()
 
 POST	/participarViagem				controllers.Application.participarViagem()
 
-POST	/editarViagem					controllers.Application.editarViagem()
+GET		/editarViagem					controllers.Application.editarViagem()
 POST	/desistirViagem					controllers.Application.desistirViagem()
 
 # Login

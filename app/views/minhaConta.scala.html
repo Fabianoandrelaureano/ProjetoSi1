@@ -1,0 +1,61 @@
+@(usuario :Usuario, controlador: ControladorDeBD)
+@main("Home Page"){
+
+<ul class="nav nav-pills">
+	<li><a href="/""> In&iacute;cio</a></li>
+	<li><a href="/criarViagem">Cadastrar uma nova Viagem</a></li>
+</ul>
+
+<div class="container form-horizontal panel panel-primary text-info">
+	<div class="table-responsive">
+		<table class="table table-hover">
+				<center>
+					<h2>Meus Dados</h2>
+				</center>
+				<center>
+					<p class="lead">@usuario.getNome()</p>
+				</center>
+				<br>
+				<center>
+					<p class="lead">@usuario.getEmail()</p>
+				</center>
+				<br>				
+		</table>
+	</div>
+</div>
+
+
+<div class="col-6 col-sm-6 col-lg-6">
+		<div class="container form-horizontal panel panel-primary text-info" style= "width:500px;">
+			<h2>Viagens Organizadas</h2>
+			@for(viagem <- controlador.getViagens()){
+				@if(viagem.getOrganizador().equals(usuario)){
+					<h3>@viagem.getLocal()</h3>
+					<form action="/infoViagem" method="post">
+							<input type="hidden" name="local" value="@viagem.getLocal()">
+							<input type="submit" class="btn btn-primary" value="Mais Detalhes >>">
+					</form>
+				}
+			}
+		</div>
+		
+</div>
+
+
+<div class="col-6 col-sm-6 col-lg-6">
+		<div class="container form-horizontal panel panel-primary text-info" style= "width:500px;">
+			<h2>Participacoes em Viagens</h2>
+			@for(viagem <- controlador.getViagens()){
+				@for(user <- viagem.getParticipantes()){
+					@if(user.equals(usuario)){
+						<h3>@viagem.getLocal()</h3>
+						<form action="/infoViagem" method="post">
+							<input type="hidden" name="local" value="@viagem.getLocal()">
+							<input type="submit" class="btn btn-primary" value="Mais Detalhes >>">
+						</form>
+					}
+				}
+			}
+		</div>
+</div>
+}
