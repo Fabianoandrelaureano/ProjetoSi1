@@ -62,6 +62,16 @@ public class Viagem {
 		senha = "";
 		this.organizador = organizador;
 	}
+	
+	public Viagem(String local, String data, String descricao, Usuario organizador, String senha) {
+		this.setLocal(local);
+		this.setData(data);
+		this.setDescricao(descricao);
+		pessoasNaViagem = new ArrayList<Usuario>();
+//		cadastro = new CadastroAberto();
+		this.setSenha(senha);
+		this.organizador = organizador;
+	}
 
 	public void setLocal(String local) {
 		this.local = local;
@@ -114,6 +124,10 @@ public class Viagem {
 	
 	public String getSenha(){
 		return this.senha;
+	}
+	
+	public void setSenha(String senha){
+		this.senha = senha;
 	}
 
 	public Usuario getOrganizador() {
