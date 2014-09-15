@@ -19,7 +19,7 @@ public class ControladorDeBD {
 //	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	private ControladorDeBD(){
-		Usuario[] users = {new Usuario("Ítalo", "italo.lins@ccc.ufcg.edu.br", "123"), new Usuario("Fabiano", "fabiano.laureano@ccc.ufcg.edu.br", "123"), new Usuario("Wellington", "wellington.araujo.silva@ccc.ufcg.edu.br", "123"), new Usuario("Guilherme", "guilherme@gmail.com", "123"), new Usuario("Gustavo", "gustavo@gmail.com", "123"), 
+		Usuario[] users = {new Usuario("Ítalo", "italo.lins@ccc.ufcg.edu.br", "123"), new Usuario("Fabiano", "fabiano.laureano@ccc.ufcg.edu.br", "123"), new Usuario("Wellington", "wellington.araujo.silva@ccc.ufcg.edu.br", "123"), new Usuario("Nazareno", "nazareno@gmail.com", "123"), new Usuario("Gustavo", "gustavo@gmail.com", "123"), 
 				new Usuario("Jose", "jose@gmail.com", "123"), new Usuario("Carlos", "carlos@gmail.com", "123"), new Usuario("Antonio", "antonio@gmail.com", "123"), new Usuario("Vitor", "vitor@gmail.com", "123"), new Usuario("Pedro", "pedro@gmail.com", "123"), 
 				new Usuario("Joao", "joao@outlook.com", "123"), new Usuario("Maria", "maria@outlook.com", "123"), new Usuario("Marta", "marta@outlook.com", "123"), new Usuario("Carla", "carla@outlook.com", "123"), new Usuario("Enzo", "enzo@outlook.com", "123"), 
 				new Usuario("Ricardo", "ricardo@gmail.com", "123"), new Usuario("Batista", "batista@gmail.com", "123"), new Usuario("Hugo", "hugo@gmail.com", "123"), new Usuario("Silvano", "silvano@gmail.com", "123"), new Usuario("Vilma", "vilma@gmail.com", "123"), 
