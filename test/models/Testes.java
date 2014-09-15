@@ -76,6 +76,20 @@ public class Testes {
 	}
 	
 	@Test
+	public void deveRemoverParticipanteDaViagem() {
+		Viagem v1 = new Viagem("local", "data", "descricao", u1);
+		
+		v1.addPessoaNaViagem(u2, "");
+		
+		Assert.assertEquals(v1.getParticipantes().contains(u2), true);
+		
+		v1.removeParticipante(u2);
+		
+		Assert.assertEquals(v1.getParticipantes().contains(u2), false);
+		
+	}
+	
+	@Test
 	public void testeDoEquals() { //Dps apaga
 		Assert.assertEquals(u1.equals(u3), true);
 		Assert.assertEquals(u1.equals(u2), false);
